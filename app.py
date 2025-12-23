@@ -1,3 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>My Streamlit App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@stlite/mountable@0.39.0/build/stlite.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@stlite/mountable@0.39.0/build/stlite.js"></script>
+    <script>
+      stlite.mount({
+        entrypoint: "main.py", // This points to your main.py file
+        files: {
+          "main.py": `
+import streamlit as st
+
 import streamlit as st
 import cv2
 import numpy as np
@@ -270,3 +289,10 @@ if uploaded_file is not None:
         output_bgr = cv2.cvtColor(output, cv2.COLOR_RGB2BGR) if len(output.shape) == 3 else output
         cv2.imwrite("processed_image.jpg", output_bgr)
         st.success("Image saved as 'processed_image.jpg'")
+
+        },
+      }, document.getElementById("root"));
+    </script>
+  </body>
+</html>
+
